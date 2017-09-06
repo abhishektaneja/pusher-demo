@@ -3,7 +3,46 @@
     <title>Pusher Test</title>
     <script src="https://unpkg.com/vue"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-    <script>
+    <style>
+        .rTable { display: table; }
+        .rTableRow { display: table-row; }
+        .rTableCell, .rTableHead { padding:10px; display: table-cell; }
+    </style>
+</head>
+<body>
+<div id="app-wrap">
+    <h2>My Bookings</h2>
+    <div class="rTable" id="booking-list">
+        <div class="rTableRow">
+            <div class="rTableHead"><strong>BookingId</strong></div>
+            <div class="rTableHead"><strong>hotelName</strong></div>
+            <div class="rTableHead"><strong>Date</strong></div>
+        </div>
+
+            <booking-info
+                    v-for="booking in bookingList"
+                    v-bind:bookinfo="booking"
+                    v-bind:key="booking.id">
+            </booking-info>
+
+    </div>
+</div>
+<script type="application/javascript">
+
+    var app7;
+    
+    window.onload = function(e){
+        
+        Vue.component('booking-info', {
+            props: ['bookinfo'],
+            template: '<div class="rTableRow"><div class="rTableCell">{{ bookinfo.id }}</div><div class="rTableCell">{{ bookinfo.hotelName }}</div><div class="rTableCell">{{ bookinfo.date }}</div></div>'
+        });
+       app7 = new Vue({
+            el: '#booking-list',
+            data: {
+                bookingList: []
+            }
+        });
 
         var userID = 1;
 
@@ -16,22 +55,17 @@
         });
 
         var channel = pusher.subscribe('get-bookings-' + userID);
-        channel.bind('my-event', function (data) {
-            alert(data.message);
+        channel.bind('booking-success', function (data) {
+            try{
+                app7.bookingList.push(JSON.parse(data.message));
+            }catch(err){
+                console.log(err);
+            }
         });
-    </script>
+    };
 
-</head>
-<body>
-<div id="app">
-    {{ message }}
-</div>
-<script type="application/javascript">
-    var app = new Vue({
-        el: '#app',
-        data: {
-            message: 'Hello Vue!'
-        }
-    })
+
+
+    // app4.bookings.push({id: '1', hotelName: 'Hotel 1', date: '2017-09-09'})
 </script>
 </body>
