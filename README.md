@@ -9,7 +9,7 @@ index.html?pubId=<pusher-publisher-id>&userId=<user-id>
 
 npm install fs
 npm install pusher
-node trigger-event.js <user-id> <booking-id> <hotel-name> <booking-date>
+node trigger-event.js user-id booking-id hotel-name booking-date
 
 # Config:
 
