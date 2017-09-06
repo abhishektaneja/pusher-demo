@@ -29,10 +29,11 @@
 </div>
 <script type="application/javascript">
 
-    var app7;
-    
+
     window.onload = function(e){
-        
+
+        var app7;
+
         Vue.component('booking-info', {
             props: ['bookinfo'],
             template: '<div class="rTableRow"><div class="rTableCell">{{ bookinfo.id }}</div><div class="rTableCell">{{ bookinfo.hotelName }}</div><div class="rTableCell">{{ bookinfo.date }}</div></div>'
@@ -64,8 +65,5 @@
         });
     };
 
-
-
-    // app4.bookings.push({id: '1', hotelName: 'Hotel 1', date: '2017-09-09'})
 </script>
 </body>
