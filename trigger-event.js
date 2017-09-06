@@ -5,7 +5,7 @@ var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 var args = process.argv.slice(2);
 
 var pusher = new Pusher({
-    appId: '396115',
+    appId: config.appId,
     key: config.key,
     secret: config.secret,
     cluster: 'eu',
@@ -13,9 +13,14 @@ var pusher = new Pusher({
 });
 
 
-if (args.length == 3) {
+if (args.length == 4) {
 
-    pusher.trigger('get-bookings-1', 'booking-success', {
-        "message": '{"id": "' + args[0] + '", "hotelName": "' + args[1] + '", "date": "' + args[2] + '"}'
+    var userId = args[0];
+    var bookingId = args[1];
+    var hotelName = args[2];
+    var bookingDate = args[3];
+
+    pusher.trigger('get-bookings-' + userId, 'booking-success', {
+        "message": '{"id": "' + bookingId + '", "hotelName": "' + hotelName + '", "date": "' + bookingDate + '"}'
     });
 }

@@ -45,12 +45,13 @@
             }
         });
 
-        var userID = 1;
+        var url = new URL(window.location.href);
+        var userID = url.searchParams.get("userId");
+        var publisherId = url.searchParams.get("pubId");
 
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
 
-        var pusher = new Pusher('605fc24dce5d206b5a88', {
+        var pusher = new Pusher(publisherId, {
             cluster: 'eu',
             encrypted: true
         });
