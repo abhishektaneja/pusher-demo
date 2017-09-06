@@ -3,7 +3,7 @@
 
 # To view bookings:
 
-index.html?pubId=<pusher-publisher-id>&userId=<user-id>
+- index.html?pubId=<pusher-publisher-id>&userId=<user-id>
 
 # To test event:
 
