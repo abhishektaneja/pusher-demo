@@ -1,0 +1,152 @@
+FORMAT: 1A
+
+# trv studio content api
+
+This is trivago studio data exchange api
+
+## Group bookingApp
+
+bookings app
+
+### /content/bookingApp/getBookings
+
+#### GET
+
++ Response 200
+
+    Returned Bookings
+
+    + Body
+
++ Response 400
+
+    Bad Request
+
+    + Body
+
+#### GET /content/bookingApp/createBooking
+
++ Parameters
+
+    + customer_name (required)
+
++ Response 201
+
+    Bookings created
+
+    + Body
+
++ Response 400
+
+    Invalid request
+
+    + Body
+
+#### GET /content/bookingApp/getBooking
+
++ Parameters
+
+    + bookingId (required)
+
++ Response 200
+
+    Returned Booking
+
+    + Body
+
++ Response 400
+
+    Bad Request
+
+    + Body
+
++ Response 404
+
+    No Booking found
+
+    + Body
+
+#### GET /content/bookingApp/updateBookingData
+
++ Parameters
+
+    + bookingId (required)
+    
+    + customer_name (required)
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Booking updated
+
+    + Body
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 400 (application/json)
+
+    Bad request
+
+    + Body
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 404 (application/json)
+
+    No booking found
+
+    + Body
+
+#### GET /content/bookingApp/deleteBookingData
+
++ Parameters
+
+    + bookingId (required)
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Booking deleted
+
+    + Body
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 404 (application/json)
+
+    No booking was found
+
+    + Body
+
