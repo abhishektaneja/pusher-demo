@@ -1,0 +1,151 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is trivago studio data exchange api",
+    "version": "1.0",
+    "title": "trv studio content api",
+    "contact": {
+      "email": "sandbox.studio@trivago.com"
+    }
+  },
+  "host": "develop.ar-studio-content-api.studio-sandbox.trv.cloud",
+  "basePath": "/content",
+  "tags": [{
+    "name": "bookingApp",
+    "description": "bookings app"
+  }],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/bookingApp/getBookings": {
+      "get": {
+        "operationId": "bookingApp-getBookings",
+        "tags": [
+          "bookingApp"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned Bookings"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/bookingApp/createBooking": {
+      "get": {
+        "operationId": "bookingApp-createBooking",
+        "tags": [
+          "bookingApp"
+        ],
+        "parameters": [{
+          "name": "customer_name",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "201": {
+            "description": "Bookings created"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/bookingApp/getBooking": {
+      "get": {
+        "operationId": "bookingApp-getBooking",
+        "tags": [
+          "bookingApp"
+        ],
+        "parameters": [{
+          "name": "bookingId",
+          "in": "query",
+          "required": true,
+          "type": "integer"
+        }],
+        "responses": {
+          "200": {
+            "description": "Returned Booking"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "No Booking found"
+          }
+        }
+      }
+    },
+    "/bookingApp/updateBookingData": {
+      "get": {
+        "operationId": "bookingApp-updateBookingData",
+        "tags": [
+          "bookingApp"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "bookingId",
+          "in": "query",
+          "required": true,
+          "type": "integer"
+        },
+          {
+            "name": "customer_name",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Booking updated"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "No booking found"
+          }
+        }
+      }
+    },
+    "/bookingApp/deleteBookingData": {
+      "get": {
+        "operationId": "bookingApp-deleteBookingData",
+        "tags": [
+          "bookingApp"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "bookingId",
+          "in": "query",
+          "required": true,
+          "type": "integer",
+        }],
+        "responses": {
+          "200": {
+            "description": "Booking deleted"
+          },
+          "404": {
+            "description": "No booking was found"
+          }
+        }
+      }
+    }
+  }
+}
